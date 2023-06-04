@@ -6,5 +6,25 @@
 #include  "bst.h"
 
 BST<std::string> makeTree(const char* filename) {
-  // поместите сюда свой код
+    BST<std::string> tree;
+
+    std::ifstream file(filename);
+    if (!file) {
+        std::cout << "File error!" << std::endl;
+        return;
+    }
+
+    std::string countwords;
+
+    while (!file.eof()) {
+        char ch = tolower(file.get());
+        if (isalpha(ch)) {
+            countwords = countwords + ch;
+        } else {
+            tree.add(countwords);
+            countwords.clear();
+        }
+    }
+    file.close();
+    return tree;
 }
