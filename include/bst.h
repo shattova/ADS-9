@@ -34,7 +34,7 @@ class BST {
         }
         if (root->value > value) {
             return searchNode(root->left, value);
-        }   
+        }
         return searchNode(root->right, value);
     }
     int depthTree(Node* root) {
